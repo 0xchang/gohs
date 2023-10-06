@@ -19,6 +19,12 @@ build:
 		export GOARCH=$(word 2,$(subst _, ,$(platform))); \
 		CGO_ENABLED=0 go build -ldflags "$(LDFLAGS)" -o $(OUTPUT_DIR)/$(notdir $(CURDIR))-$(subst _,-,$(platform)); \
 	)
+	
+	@mv ./release/gohs-windows-386 ./release/gohs_windows_386.exe
+	@mv ./release/gohs-windows-amd64 ./release/gohs_windows_amd64.exe
+	@mv ./release/gohs-linux-amd64 ./release/gohs_linux_amd64
+	@mv ./release/gohs-linux-386 ./release/gohs_linux_386
+	# @mv ./release/gohs-windows-arm64 ./release/gohs_windows_arm64.exe
 
 .PHONY: build
 
