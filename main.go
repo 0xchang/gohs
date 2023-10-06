@@ -18,6 +18,8 @@ func main() {
 	flag.StringVar(&addr, "a", "0.0.0.0", "asd")
 	flag.StringVar(&root, "r", ".", "")
 
+	gin.SetMode(gin.ReleaseMode)
+
 	router := gin.Default()
 
 	// 设置静态文件路由
