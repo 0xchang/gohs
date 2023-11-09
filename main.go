@@ -32,6 +32,8 @@ func main() {
 	// 设置静态文件路由
 	router.StaticFS("/", http.Dir(root))
 
+	fmt.Println("server start...")
+
 	// 启动服务
 	router.Run(fmt.Sprint(addr, ":", port))
 }
