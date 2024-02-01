@@ -11,12 +11,14 @@ import (
 var port int
 var addr string
 var root string
+var list bool
 
 func main() {
 
 	flag.IntVar(&port, "p", 8075, "set port")
 	flag.StringVar(&addr, "a", "0.0.0.0", "set ip addr")
 	flag.StringVar(&root, "r", ".", "set root path")
+	flag.BoolVar(&list, "l", true, "list path")
 
 	flag.Parse()
 
@@ -30,10 +32,13 @@ func main() {
 	})
 
 	// 设置静态文件路由
-	router.StaticFS("/", http.Dir(root))
+	if list {
+		router.StaticFS("/", http.Dir(root))
+	} else {
+		router.Static("/", root)
+	}
 
-	fmt.Println("server start...")
-
+	fmt.Printf("http://%s:%d  %s", addr, port, "server start...")
 	// 启动服务
 	router.Run(fmt.Sprint(addr, ":", port))
 }
