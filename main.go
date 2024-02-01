@@ -18,7 +18,7 @@ func main() {
 	flag.IntVar(&port, "p", 8075, "set port")
 	flag.StringVar(&addr, "a", "0.0.0.0", "set ip addr")
 	flag.StringVar(&root, "r", ".", "set root path")
-	flag.BoolVar(&list, "l", true, "list path")
+	flag.BoolVar(&list, "l", false, "list path")
 
 	flag.Parse()
 
